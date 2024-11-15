@@ -21,10 +21,11 @@ p { text-align: center; }
 
 /********** Link Styles ***********/
 
-#links {
+#links, #numbers {
 	width: 420px;
 	display: flex;
 	margin: auto;
+	cursor: pointer;
 }
 
 #links a {
@@ -40,6 +41,24 @@ p { text-align: center; }
 	text-align: center;
 }
 
+#numbers a {
+	display: block;
+	flex: 1;
+	background: #6C0204;
+	height: 50px;
+	line-height: 50px;
+	color: #D5D5D5;
+	text-decoration: none;
+	font-family: Arial;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#numbers a:hover {
+	background: #A51D1F;
+	color: #fff;
+}
+
 #links a:hover {
 	background: #A51D1F;
 	color: #fff;
@@ -47,7 +66,7 @@ p { text-align: center; }
 
 /************ Animation Styles ************/
 .fadeShow {
-	animation: fade 1s;
+	animation: fade 0.5s;
 }
 
 @keyframes fade {

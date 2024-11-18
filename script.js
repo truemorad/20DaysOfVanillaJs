@@ -3,9 +3,21 @@ const content = document.getElementById('content');
 const next = document.getElementById('next');
 const previous = document.getElementById('previous');
 const para = document.getElementById('numbers');
+const safe = document.getElementById('safe');
 
 var images = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg'];
 var index = 0;
+// images counter + button for each image
+window.addEventListener('load', () => {
+    for (let i = 0; i < images.length; i++) {
+        var anchor = document.createElement('a');
+        var textAnchor = document.createTextNode(i+1);
+        anchor.id = `a${i}`;
+        anchor.addEventListener('click', () => newImg(i));
+        anchor.appendChild(textAnchor);
+        para.appendChild(anchor);
+    }
+});
 // function updates displayed image
 var newImg = (i) => {
     if (i) {
@@ -23,19 +35,8 @@ var newImg = (i) => {
         content.removeChild(content.children[0]);
     }
 }
-// images counter + button for each image
-window.addEventListener('load', () => {
-    for (let i = 0; i < images.length; i++) {
-        var anchor = document.createElement('a');
-        var textAnchor = document.createTextNode(i+1);
-        anchor.id = `a${i}`;
-        anchor.addEventListener('click', () => newImg(i));
-        anchor.appendChild(textAnchor);
-        para.appendChild(anchor);
-    }
-});
-// next button function
-next.onclick = function(evt) {
+// next img function
+const nextImg = (evt) => {
     evt.preventDefault();
     index++;
     if (index > images.length-1) {
@@ -43,8 +44,9 @@ next.onclick = function(evt) {
     }
     newImg();
 }
+next.onclick = nextImg;
 // previous button function
-previous.onclick = function(evt) {
+const prevImg = (evt) => {
     evt.preventDefault();
     index--;
     if (index < 0) {
@@ -52,3 +54,4 @@ previous.onclick = function(evt) {
     }
     newImg();
 }
+previous.onclick = prevImg;
